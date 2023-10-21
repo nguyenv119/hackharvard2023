@@ -5,6 +5,8 @@ import { useNavigation } from '@react-navigation/native'; // Import this if you'
 import { extractEmotions } from '../services/ML'; // Adjust the import statement to your file structure
 import {useFonts} from 'expo-font';
 
+// 	navigation.navigate('Insights')
+
 const NewEntry = () => {
   const [prompt, setPrompt] = useState('');
 
@@ -17,20 +19,20 @@ const NewEntry = () => {
   
   const navigation = useNavigation(); // This hook is for navigation
 
-	const submitPrompt = async () => {
-		if (prompt.trim()) {
-			try {
-				const extractedEmotions = await extractEmotions(prompt);
-				console.log("2")
-				navigation.navigate('EmotionRatingScreen', { emotions: extractedEmotions });
-			} catch (error) {
-				console.error(error);
-				Alert.alert('Error', 'There was an error processing your request.'); // Basic error handling
-			}
-		} else {
-			Alert.alert('Input Required', 'Please enter your feelings to proceed.'); // Prompt the user to enter data
-		}
-	};
+  const submitPrompt = async () => {
+	console.log("1")
+    if (prompt.trim()) {
+      try {
+        const extractedEmotions = await extractEmotions(prompt);
+        navigation.navigate('EmotionRatingScreen', { emotions: extractedEmotions });
+      } catch (error) {
+        console.error(error);
+        Alert.alert('Error', 'There was an error processing your request.'); // Basic error handling
+      }
+    } else {
+      Alert.alert('Input Required', 'Please enter your feelings to proceed.'); // Prompt the user to enter data
+    }
+  };
 
   return (
     <View style={styles.screen}>
@@ -48,7 +50,7 @@ const NewEntry = () => {
       >
         <Text style={{ fontFamily: customFont }}>Continue</Text>
       </TouchableOpacity>
-	{/* <Button title="Continue" titleStyle={{ fontFamily: customFont }}  onPress={() => submitPrompt} /> */}
+	<Button title="Submit" onPress={() => submitPrompt()} />
     </View>
   );
 };
