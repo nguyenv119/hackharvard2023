@@ -4,50 +4,51 @@ import { useNavigation } from '@react-navigation/native'; // Import this if you'
 import { extractEmotions } from '../services/ML'; // Adjust the import statement to your file structure
 
 const NewEntry = () => {
-  const [prompt, setPrompt] = useState('');
-  const navigation = useNavigation(); // This hook is for navigation
+	const [prompt, setPrompt] = useState('');
+	const navigation = useNavigation(); // This hook is for navigation
 
-  const submitPrompt = async () => {
-    if (prompt.trim()) {
-      try {
-        const extractedEmotions = await extractEmotions(prompt);
-        console.log("2")
-        navigation.navigate('EmotionRatingScreen', { emotions: extractedEmotions });
-      } catch (error) {
-        console.error(error);
-        Alert.alert('Error', 'There was an error processing your request.'); // Basic error handling
-      }
-    } else {
-      Alert.alert('Input Required', 'Please enter your feelings to proceed.'); // Prompt the user to enter data
-    }
-  };
+	const submitPrompt = async () => {
+		if (prompt.trim()) {
+			try {
+				const extractedEmotions = await extractEmotions(prompt);
+				console.log("2")
+				navigation.navigate('EmotionRatingScreen', { emotions: extractedEmotions });
+			} catch (error) {
+				console.error(error);
+				Alert.alert('Error', 'There was an error processing your request.'); // Basic error handling
+			}
+		} else {
+			Alert.alert('Input Required', 'Please enter your feelings to proceed.'); // Prompt the user to enter data
+		}
+	};
 
-  return (
-    <View style={styles.screen}>
-      <TextInput 
-        style={styles.input} 
-        multiline 
-        value={prompt} 
-        onChangeText={setPrompt} 
-        placeholder="How are you feeling today?" 
-      />
-	<Button title="Submit" onPress={() => submitPrompt} />
-    </View>
-  );
+	return (
+		<View style={styles.screen}>
+			<TextInput
+				style={styles.input}
+				multiline
+				value={prompt}
+				onChangeText={setPrompt}
+				placeholder="How are you feeling today?"
+			/>
+			<Button title="Submit" onPress={() => submitPrompt} />
+		</View>
+	);
 };
 
 const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  input: {
-    width: '80%',
-    borderColor: 'gray',
-    borderWidth: 1,
-    padding: 10,
-  },
+	screen: {
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center',
+	},
+	input: {
+		width: '80%',
+		borderColor: 'gray',
+		border: 'none',
+		borderWidth: 1,
+		padding: 10,
+	},
 });
 
 export default NewEntry;
