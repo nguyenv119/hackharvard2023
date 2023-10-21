@@ -10,7 +10,7 @@ SplashScreen.preventAutoHideAsync();
 export default function App() {
 
 	const [fontsLoaded, fontError] = useFonts({
-		'Tilt-Neon': require('./assets/fonts/TiltNeon-Regular-VariableFont_XROT,YROT.ttf'),
+		'Tilt-Neon': require('./assets/fonts/TiltNeon-Regular-VariableFont.ttf'),
 	});
 
 	const onLayoutRootView = useCallback(async () => {
