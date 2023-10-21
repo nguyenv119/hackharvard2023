@@ -1,36 +1,41 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import { useFonts } from 'expo-font';
-import { useCallback } from 'react';
-import * as SplashScreen from 'expo-splash-screen';
+import { StyleSheet, Text, View, Button } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-SplashScreen.preventAutoHideAsync();
 
+const Stack = createNativeStackNavigator();
+
+function MyStack() {
+	return (
+		<Stack.Navigator>
+			<Stack.Screen name="Home" component={HomeScreen} />
+			<Stack.Screen name="Details" component={DetailsScreen} />
+		</Stack.Navigator>
+	);
+}
 
 export default function App() {
 
-	const [fontsLoaded, fontError] = useFonts({
-		'Tilt-Neon': require('./assets/fonts/TiltNeon-Regular-VariableFont_XROT,YROT.ttf'),
-	});
 
-	const onLayoutRootView = useCallback(async () => {
-		if (fontsLoaded || fontError) {
-			await SplashScreen.hideAsync();
-		}
-	}, [fontsLoaded, fontError]);
-
-	if (!fontsLoaded && !fontError) {
-		return null;
-	}
 
 	return (
-		<View style={styles.container} onLayout={onLayoutRootView}>
-			<Text style={styles.text}>Good morning, Vietnam!</Text>
-			<StatusBar style="auto" />
+		<NavigationContainer>
+			<Stack.Navigator>
+				<Stack.Screen name="Home" component={HomeScreen} />
+			</Stack.Navigator>
+			{/* <View style={styles.container}>
+				<Text style={styles.text}>Good morning, Vietnam!</Text>
+				<StatusBar style="auto" /> */}
 			{/* <View style={styles.journalContainer}>
 				<Text>Test</Text>
 			</View> */}
-		</View>
+			{/* </View>
+			<Button
+				title="Go to Details"
+				onPress={() => navigation.navigate('Details')}
+			/> */}
+		</NavigationContainer>
 	);
 }
 
@@ -52,6 +57,5 @@ const styles = StyleSheet.create({
 		fontSize: 20,
 		top: -300,
 		fontWeight: 'bold',
-		fontFamily: 'Tilt-Neon',
 	}
 });
