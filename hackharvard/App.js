@@ -25,7 +25,7 @@ export default function App() {
 					options={{
 						title: 'Add New Journal Entry',
 						headerStyle: {
-							backgroundColor: '#000000',
+							backgroundColor: '#B2AC88',
 						},
 						headerTintColor: '',
 						headerTitleStyle: {
