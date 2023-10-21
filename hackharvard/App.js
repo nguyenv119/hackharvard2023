@@ -10,6 +10,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
 	const [fontsLoaded] = useFonts({
 		'Tilt-Neon': require('./assets/fonts/TiltNeon-Regular-VariableFont.ttf'),
+		
 	});
 
 	const customFont = fontsLoaded ? 'Tilt-Neon' : 'Arial';
