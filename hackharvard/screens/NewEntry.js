@@ -46,7 +46,7 @@ const NewEntry = () => {
         style={[styles.customButton, { fontFamily: customFont }]}
         onPress={submitPrompt}
       >
-        <Text style={styles.buttonText}>Continue</Text>
+        <Text style={{ fontFamily: customFont }}>Continue</Text>
       </TouchableOpacity>
 	{/* <Button title="Continue" titleStyle={{ fontFamily: customFont }}  onPress={() => submitPrompt} /> */}
     </View>
@@ -64,10 +64,11 @@ const styles = StyleSheet.create({
     borderColor: 'gray',
     borderWidth: 1,
     padding: 10,
+	fontFamily: 'Caudex', 
   },
   buttonText: {
     color: 'green', // Example text color
-    fontSize: 20,
+    fontSize: 18,
     fontFamily: 'Caudex', // Apply the custom font to the button text
   },
 });
