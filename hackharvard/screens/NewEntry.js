@@ -17,20 +17,20 @@ const NewEntry = () => {
   
   const navigation = useNavigation(); // This hook is for navigation
 
-  const submitPrompt = async () => {
-    if (prompt.trim()) {
-      try {
-        const extractedEmotions = await extractEmotions(prompt);
-        console.log("2")
-        navigation.navigate('EmotionRatingScreen', { emotions: extractedEmotions });
-      } catch (error) {
-        console.error(error);
-        Alert.alert('Error', 'There was an error processing your request.'); // Basic error handling
-      }
-    } else {
-      Alert.alert('Input Required', 'Please enter your feelings to proceed.'); // Prompt the user to enter data
-    }
-  };
+	const submitPrompt = async () => {
+		if (prompt.trim()) {
+			try {
+				const extractedEmotions = await extractEmotions(prompt);
+				console.log("2")
+				navigation.navigate('EmotionRatingScreen', { emotions: extractedEmotions });
+			} catch (error) {
+				console.error(error);
+				Alert.alert('Error', 'There was an error processing your request.'); // Basic error handling
+			}
+		} else {
+			Alert.alert('Input Required', 'Please enter your feelings to proceed.'); // Prompt the user to enter data
+		}
+	};
 
   return (
     <View style={styles.screen}>

@@ -19,7 +19,20 @@ export default function App() {
 		<NavigationContainer>
 			<Stack.Navigator initialRouteName='NewEntry'>
 				{/* <Stack.Screen name="Home" component={HomeScreen} /> */}
-				<Stack.Screen name="NewEntry" component={NewEntry} options={{headerTitleStyle: { fontFamily: customFont,},}}/>
+				<Stack.Screen
+					name="NewEntry"
+					component={NewEntry}
+					options={{
+						title: 'Add New Journal Entry',
+						headerStyle: {
+							backgroundColor: '#000000',
+						},
+						headerTintColor: '',
+						headerTitleStyle: {
+							fontWeight: 'bold',
+						},
+					}}
+				/>
 				<Stack.Screen name="Insights" component={Insights} />
 			</Stack.Navigator>
 
