@@ -17,20 +17,19 @@ const NewEntry = () => {
 
   const customFont = fontsLoaded ? 'Caudex' : 'Arial';
   
-  const navigation = useNavigation(); // This hook is for navigation
+  const navigation = useNavigation(); 
 
   const submitPrompt = async () => {
-	console.log("1")
     if (prompt.trim()) {
       try {
         const extractedEmotions = await extractEmotions(prompt);
-        navigation.navigate('EmotionRatingScreen', { emotions: extractedEmotions });
+        navigation.navigate('EmotionRating', { emotions: extractedEmotions });
       } catch (error) {
         console.error(error);
-        Alert.alert('Error', 'There was an error processing your request.'); // Basic error handling
+        Alert.alert('Error', 'There was an error processing your request.'); 
       }
     } else {
-      Alert.alert('Input Required', 'Please enter your feelings to proceed.'); // Prompt the user to enter data
+      Alert.alert('Input Required', 'Please enter your feelings to proceed.'); 
     }
   };
 
