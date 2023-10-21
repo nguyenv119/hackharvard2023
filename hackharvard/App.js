@@ -12,11 +12,13 @@ export default function App() {
 		'Tilt-Neon': require('./assets/fonts/TiltNeon-Regular-VariableFont.ttf'),
 	});
 
+	const customFont = fontsLoaded ? 'Tilt-Neon' : 'Arial, sans-serif'; 
+
 	return (
 		<NavigationContainer>
 			<Stack.Navigator initialRouteName='NewEntry'>
 				{/* <Stack.Screen name="Home" component={HomeScreen} /> */}
-				<Stack.Screen name="NewEntry" component={NewEntry} />
+				<Stack.Screen name="NewEntry" component={NewEntry} options={{headerTitleStyle: { fontFamily: customFont,},}}/>
 				<Stack.Screen name="Insights" component={Insights} />
 			</Stack.Navigator>
 
