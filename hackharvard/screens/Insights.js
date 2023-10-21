@@ -1,4 +1,3 @@
-
 import { StyleSheet, Text, View, Button } from 'react-native';
 
 export default function Insights() {
@@ -8,4 +7,3 @@ export default function Insights() {
 		</View>
 	)
 }
-
