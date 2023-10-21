@@ -1,16 +1,18 @@
+
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import NewEntry from './screens/NewEntry';
 import Insights from './screens/Insights';
 
+
+
 const Stack = createNativeStackNavigator();
 
 
 export default function App() {
 
-
-	return (
+return (
 		<NavigationContainer>
 			<Stack.Navigator initialRouteName='NewEntry'>
 				{/* <Stack.Screen name="Home" component={HomeScreen} /> */}
