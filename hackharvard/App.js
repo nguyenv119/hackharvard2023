@@ -12,7 +12,7 @@ export default function App() {
 		'Tilt-Neon': require('./assets/fonts/TiltNeon-Regular-VariableFont.ttf'),
 	});
 
-	const customFont = fontsLoaded ? 'Tilt-Neon' : 'Arial, sans-serif'; 
+	const customFont = fontsLoaded ? 'Tilt-Neon' : 'Arial';
 
 	return (
 		<NavigationContainer>
