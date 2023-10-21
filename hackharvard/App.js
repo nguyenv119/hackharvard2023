@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import NewEntry from './screens/NewEntry';
 import Insights from './screens/Insights';
-
+import { useFonts } from 'expo-font';
 const Stack = createNativeStackNavigator();
 
 
