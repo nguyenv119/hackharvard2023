@@ -44,8 +44,8 @@ const styles = StyleSheet.create({
 	},
 	input: {
 		width: '80%',
-		borderColor: 'gray',
-		border: 'none',
+		borderColor: 'transparent',
+		// border: 'none',
 		borderWidth: 1,
 		padding: 10,
 	},
