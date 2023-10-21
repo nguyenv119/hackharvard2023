@@ -50,7 +50,7 @@ const NewEntry = () => {
       >
         <Text style={{ fontFamily: customFont }}>Continue</Text>
       </TouchableOpacity>
-	<Button title="Submit" onPress={() => submitPrompt()} />
+	{/* <Button title="Submit" onPress={() => submitPrompt()} /> */}
     </View>
   );
 };
