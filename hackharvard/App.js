@@ -3,6 +3,9 @@ import { StyleSheet, Text, View } from 'react-native';
 import { useFonts } from 'expo-font';
 import { useCallback } from 'react';
 import * as SplashScreen from 'expo-splash-screen';
+import { NavigationContainer } from '@react-navigation/native';
+
+import AppNavigator from './components/AppNavigator';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -23,15 +26,12 @@ export default function App() {
 		return null;
 	}
 
-	return (
-		<View style={styles.container} onLayout={onLayoutRootView}>
-			<Text style={styles.text}>Good morning, Vietnam!</Text>
-			<StatusBar style="auto" />
-			{/* <View style={styles.journalContainer}>
-				<Text>Test</Text>
-			</View> */}
-		</View>
-	);
+  return (
+    <NavigationContainer>
+      <AppNavigator />
+      {/* <StatusBar style="auto" /> */}
+    </NavigationContainer>
+  );
 }
 
 const styles = StyleSheet.create({
