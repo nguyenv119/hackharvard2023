@@ -21,6 +21,7 @@ return (
 			</Stack.Navigator>
 
 		</NavigationContainer>
+
 	);
 }
 
