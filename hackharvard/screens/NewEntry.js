@@ -4,7 +4,7 @@ import { Image, SafeAreaView, Pressable, View, Keyboard, Text, TouchableOpacity,
 import { useNavigation } from '@react-navigation/native'; // Import this if you're using React Navigation 5.x or above
 import { extractEmotions } from '../services/ML'; // Adjust the import statement to your file structure
 import { useFonts } from 'expo-font';
-import TextBox from './TextBox';
+import TextBox from '../components/TextBox';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
@@ -36,6 +36,9 @@ const NewEntry = () => {
 		}
 	};
 
+	const goHome = () => {
+		navigation.navigate('Home');
+	};
 
 	const styles = StyleSheet.create({
 		screen: {
@@ -153,11 +156,15 @@ const NewEntry = () => {
 	return (
 		<>
 			<View style={styles.backContainer}>
-				<EvilIcons
-					name='chevron-left'
-					color='#64CCC5'
-					size={55}
-				/>
+				<TouchableOpacity onPress={goHome}>
+
+
+					<EvilIcons
+						name='chevron-left'
+						color='#64CCC5'
+						size={55}
+					/>
+				</TouchableOpacity>
 
 			</View>
 
