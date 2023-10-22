@@ -1,41 +1,48 @@
-import axios from 'axios';
-import { API_KEY } from '@env';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
-import Slider from '@react-native-community/slider';
 import { PieChart } from 'react-native-svg-charts';
 
 const EmotionRating = ({ route, navigation }) => {
-    const { detailedResponse, emotions } = route.params;
-	console.log(emotions)
-	const chartData = Object.keys(emotions).map((emotion) => {
-		const color = emotions[emotion]; // Get the color from the emotions object
-		return {
-			value: parseFloat(emotions[emotion].slice(1), 16), // Convert color to a number
-			svg: { fill: color }, // Set the color
-			key: `pie-${emotion}`,
-			arc: { outerRadius: '100%', cornerRadius: 5 },
-			label: emotion,
-		};
-	});
-	
+    const { detailedResponse, emotions, percent } = route.params;
 
-	
+    // Prepare data for the pie chart
+	// console.log(emotions)
+    const chartData = Object.keys(emotions).map((emotion) => {
+        // Get the color for this emotion
+        const color = emotions[emotion];
+        // console.log(color)
+        // Get the percentage for this emotion
+        const value = percent[emotion];
 
-	// console.log(chartData);
+        // Create a data point for this emotion
+        return {
+            value,  // value is the percentage of this emotion
+            svg: { fill: color }, // fill color for the slice
+            key: `pie-${emotion}`, // unique key for React list items
+            arc: { outerRadius: '100%', cornerRadius: 5 },
+            label: emotion, // the label for this slice
+        };
+    });
 
     return (
         <View style={styles.screen}>
             <Text style={styles.title}>Emotion Ratings:</Text>
-			<View style={styles.chartContainer}>
-				<View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-					<PieChart style={styles.chart} data={chartData} />
-				</View>
-			</View>
+            <View style={styles.chartContainer}>
+                <PieChart 
+                    style={styles.chart} 
+                    data={chartData} 
+                    innerRadius={'45%'} 
+                    outerRadius={'80%'} 
+                    labelRadius={'90%'}
+                    // If you want to display labels on the chart, you can add a 'label' prop to your PieChart component
+                    // and define a function to render labels based on your data.
+                    // Uncomment the line below to enable chart labels.
+                    // label={({ dataEntry }) => dataEntry.label + ' ' + (dataEntry.value * 100).toFixed(0) + '%'}
+                />
+            </View>
             <Button title="Confirm" onPress={() => navigation.goBack()} />
         </View>
     );
-	
 };
 
 
@@ -74,49 +81,5 @@ const styles = StyleSheet.create({
         marginBottom: 5,
     },
 });
-
-
-const getEmotionColors = async (emotionSummary) => {
-	// console.log(emotionSummary)
-
-	try {
-		const payload = {
-			model: "gpt-3.5-turbo",
-			messages: [
-				{ "role": "system", "content": "Given the following emotion distribution summary, provide a suitable color distribution using the available colors in this dictionary. Respond in the dictionary format of <emotion>: <color>. For example, 'Anger': '#F94144'; 'Calmness': '#2A9D8F'. Here is the dictionary of colors: " + colorsDictionary },
-				{ "role": "user", "content": Object.entries(emotionSummary).map(([emotion, percentage]) => `${emotion}: ${percentage}`).join('; ') },
-			],
-		};
-		const apiEndpoint = "https://api.openai.com/v1/chat/completions";
-		const response = await fetch(apiEndpoint, {
-			method: "POST",
-			headers: {
-				'Authorization': `Bearer ${API_KEY}`,
-				'Content-Type': 'application/json'
-			},
-			max_tokens: 10,
-			body: JSON.stringify(payload)
-		});
-
-		const answer = await response.json();
-		const data = answer.choices[0].message.content.trim();
-
-		const dataArray = data.split(';'); // Splitting by semicolon instead of newline
-
-		const emotionColorDict = {};
-
-		dataArray.forEach(item => {
-			const [emotion, color] = item.split(': ').map(s => s.trim());
-			emotionColorDict[emotion] = color;
-		});
-		console.log(emotionColorDict);
-		return emotionColorDict;
-
-	} catch (error) {
-		console.error('Error calling OpenAI API:', error.message);
-		throw error;
-	}
-};
-
 
 export default EmotionRating;

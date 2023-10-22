@@ -36,6 +36,7 @@ export const extractEmotions = async (prompt) => {
         let splitAnswer = answer.split('\n\n');
         let detailedResponse = splitAnswer.slice(0, splitAnswer.length - 1).join('\n\n');
         let emotionSummary = splitAnswer[splitAnswer.length - 1];
+        let percentage = emotionSummary;
 
         // console.log(emotionSummary)
 
@@ -72,7 +73,8 @@ export const extractEmotions = async (prompt) => {
 
         return { 
             detailedResponse: detailedResponse,
-            emotionSummary: emotionColorDict
+            emotionColor: emotionColorDict,
+            emotionPercent: percentage
         };
 
     } catch (error) {

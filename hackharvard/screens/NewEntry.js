@@ -22,12 +22,13 @@ const NewEntry = () => {
 		if (prompt.trim()) {
 			try {
 				navigation.navigate('Loading');
-				const { detailedResponse, emotionSummary } = await extractEmotions(prompt);
-				console.log(emotionSummary)
+				const { detailedResponse, emotionColor, emotionPercent } = await extractEmotions(prompt);
+				// console.log(emotionColor, emotionPercent)
 
 				navigation.navigate('EmotionRating', { 
 					detailedResponse: detailedResponse,
-					emotions: emotionSummary 
+					emotions: emotionColor,
+					percent: emotionPercent
 				});
 			} catch (error) {
 				console.error(error);
