@@ -29,7 +29,7 @@ const colorsDictionary = {
 };
 
 const EmotionRating = ({ route, navigation }) => {
-    const { emotions } = route.params;
+    const {emotions}  = route.params;
     const [emotionColors, setEmotionColors] = useState({});
 
     useEffect(() => {
@@ -60,9 +60,9 @@ const EmotionRating = ({ route, navigation }) => {
         <View style={styles.screen}>
             <Text style={styles.title}>Emotion Ratings:</Text>
 			<View style={styles.chartContainer}>
-    				<View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+    				{/* <View style={styles.chartContainer}> */}
 						<PieChart style={styles.chart} data={chartData} />
-					</View>
+					{/* </View> */}
 				</View>
             <Button title="Confirm" onPress={() => navigation.goBack()} />
         </View>
@@ -77,14 +77,14 @@ const styles = StyleSheet.create({
         justifyContent: 'center', // center vertically
         alignItems: 'center',     // center horizontally
         backgroundColor: 'white',
-        borderColor: 'green',
         borderWidth: 2           // Changed from '2px' to 2 because React Native does not recognize 'px' units
     },
     title: {
         fontSize: 24,
         marginBottom: 20, // spacing after the title
         position: 'absolute',  // positioned absolutely at the top
-        top: 10                // little margin from the top
+        top: 10,              // little margin from the top
+		color: 'black',
     },
     chartContainer: {
         flex: 1,             // take up remaining space
@@ -95,12 +95,8 @@ const styles = StyleSheet.create({
         borderWidth: 2,      // Changed from '2px' to 2
     },
 	chart: {
-		position: 'absolute',
-		top: '10%',
-		left: '10%',
-		width: '80%',
-		height: '80%',
-		margin: 'auto',
+		width: 300,
+        height: 300,
 	},	
     emotionText: {
         marginBottom: 5,
@@ -115,8 +111,8 @@ const getEmotionColors = async (emotionSummary) => {
 		const payload = {
 			model: "gpt-3.5-turbo",
 			messages: [
-				{ "role": "system", "content": "Given the following emotion distribution summary, provide a suitable color distribution using the available colors in this dictionary. Respond in the dictionary format of <emotion>: <color>. For example, 'Anger': '#F94144'; 'Calmness': '#2A9D8F'. Here is the dictionary of colors: " + colorsDictionary },
-				{ "role": "user", "content": Object.entries(emotionSummary).map(([emotion, percentage]) => `${emotion}: ${percentage}`).join('; ') },
+				{ role: "system", "content": "Given the following emotion distribution summary, provide a suitable color distribution using the available colors in this dictionary. Respond in the dictionary format of <emotion>: <color>. For example, 'Anger': '#F94144'; 'Calmness': '#2A9D8F'. Here is the dictionary of colors: " + colorsDictionary },
+				{ role: "user", "content": Object.entries(emotionSummary).map(([emotion, percentage]) => `${emotion}: ${percentage}`).join('; ') },
 			],
 		};
 		const apiEndpoint = "https://api.openai.com/v1/chat/completions";
