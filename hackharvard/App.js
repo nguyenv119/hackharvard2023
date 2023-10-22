@@ -10,7 +10,7 @@ const Stack = createNativeStackNavigator();
 export default function App() {
 	const [fontsLoaded] = useFonts({
 		'Tilt-Neon': require('./assets/fonts/TiltNeon-Regular-VariableFont.ttf'),
-		
+
 	});
 
 	const customFont = fontsLoaded ? 'Tilt-Neon' : 'Arial';
@@ -23,16 +23,25 @@ export default function App() {
 					name="NewEntry"
 					component={NewEntry}
 					options={{
-						title: 'Add New Journal Entry',
-						headerStyle: {
-							backgroundColor: '#B2AC88',
-						},
-						headerTintColor: '',
-						headerTitleStyle: {
-							fontWeight: 'bold',
-							fontFamily: customFont,
-							fontSize: 23,
-						},
+						headerShown: false,
+						// title: 'Add New Journal Entry',
+						// headerStyle: {
+						// 	backgroundColor: '#F2F0E4',
+						// 	width: 0,
+						// 	height: 0,
+						// },
+						// headerTintColor: '',
+						// headerTitleStyle: {
+						// 	fontWeight: 'bold',
+						// 	fontFamily: customFont,
+						// 	fontSize: 23,
+						// 	shadowColor: 'black',
+						// 	shadowOffset: { width: 2, height: 5 },
+						// 	shadowOpacity: 1,
+						// 	shadowRadius: 2,
+						// 	elevation: 5,
+						// },
+
 					}}
 				/>
 				<Stack.Screen name="Insights" component={Insights} />
