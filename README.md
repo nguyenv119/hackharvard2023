@@ -25,19 +25,6 @@ During development, we faced challenges such as time management, task allocation
 ## What's next for Soular
 With the data collected from the analysis generated from the journal entries, we can use the user-inputted mood data with the AI-generated data, and further compare and generate a holistic analysis of the data, providing a fresh perspective to enhance users ability to learn about themselves and grow as a person.
 
-## APP DESCRIPTION:
-
-### Overview:
-Soular is a unique journaling and mood-tracking app that illuminates your emotional universe. Powered by auto-generated AI prompts, we encourage users to engage in daily reflective writing.
-
-### User Journey:
-The user journey within Soular includes the following key steps:
-- Main page
-- New Journal Entry
-- Emotion tracking
-- Daily prompts
-- Percentage-based mood tracking
-
 ## BUSINESS MODEL:
 
 ### Industry:
