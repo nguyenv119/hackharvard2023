@@ -18,7 +18,7 @@ const EmotionRating = ({ route, navigation }) => {
     const EmotionList = Object.keys(emotions).map((emotion) => (
 		console.log(percent[emotion]),
         <Text key={emotion} style={[styles.emotionText, { color: emotions[emotion] }]}>
-            {emotion}: {(percent[emotion] * 100).toFixed(2)}%
+            {emotion}: {(percent[emotion]).toFixed(2)}%
         </Text>
     ));
 
@@ -32,7 +32,7 @@ const EmotionRating = ({ route, navigation }) => {
                     innerRadius={'45%'}
                     outerRadius={'80%'}
                     labelRadius={'90%'}
-                    label={({ dataEntry }) => dataEntry.label + ' ' + (dataEntry.value * 100).toFixed(0) + '%'}
+                    label={({ dataEntry }) => dataEntry.label + ' ' + (dataEntry.value).toFixed(0) + '%'}
                 />
             </View>
             <ScrollView contentContainerStyle={styles.emotionsContainer}>
@@ -67,6 +67,9 @@ const styles = StyleSheet.create({
         // removed borderColor and borderWidth for simplicity
     },
     chart: {
+		position: 'absolute',
+		top: '50%',
+		left: '50%',
         width: '100%', // make chart use the full width of its container
         height: '80%', // adjust as needed
     },
