@@ -5,7 +5,6 @@ import { useFonts } from 'expo-font';
 import NewEntry from './screens/NewEntry';
 import Insights from './screens/Insights';
 import EmotionRating from './screens/EmotionRating';
-import { useFonts } from 'expo-font';
 const Stack = createNativeStackNavigator();
 
 
