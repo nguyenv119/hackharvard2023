@@ -5,12 +5,12 @@ import { useNavigation } from '@react-navigation/native'; // Import this if you'
 import { extractEmotions } from '../services/ML'; // Adjust the import statement to your file structure
 import { useFonts } from 'expo-font';
 import TextBox from './TextBox';
-import Antdesign from 'react-native-vector-icons/AntDesign';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
-
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 const NewEntry = () => {
 	const [prompt, setPrompt] = useState('');
+
 	const [fontsLoaded] = useFonts({
 		'Caudex': require('../assets/fonts/Caudex-Regular.ttf'),
 
@@ -84,12 +84,6 @@ const NewEntry = () => {
 			alignItems: 'center',
 			color: 'white',
 		},
-		home: {
-			fontFamily: customFont,
-			fontSize: 25,
-			color: '#343434',
-			marginLeft: -10,
-		},
 		image: {
 			width: 200,
 			height: 200,
@@ -107,9 +101,19 @@ const NewEntry = () => {
 		arrowView: {
 			backgroundColor: '#001C30',
 			alignItems: 'flex-end',
-		}
+		},
 
 	});
+	const [date, setDate] = useState(new Date(1598051730000));
+	// const [mode, setMode] = useState('date');
+	const [show, setShow] = useState(false);
+
+	const onChange = (event, selectedDate) => {
+		const currentDate = selectedDate;
+		setShow(false);
+		setDate(currentDate);
+	};
+
 
 
 	return (
@@ -120,19 +124,24 @@ const NewEntry = () => {
 					color='#64CCC5'
 					size={55}
 				/>
-				{/* <Text style={styles.home}>
-					Home
-				</Text> */}
-				{/* <Text style={styles.title}>Add New Journal Entry</Text> */}
-				{/* <View style={styles.titleContainer}>
-
-				</View> */}
 
 			</View>
-			<View style={styles.earthContainer}>
+
+
+			<DateTimePicker
+				testID="dateTimePicker"
+				value={date}
+				// mode={mode}
+				is24Hour={true}
+				onChange={onChange}
+				display="default"
+
+			/>
+
+			{/* <View style={styles.earthContainer}>
 				<TouchableOpacity style={{ ...StyleSheet.absoluteFillObject }} onPress={Keyboard.dismiss} />
 				<Image source={require('../assets/earthmoon.gif')} style={styles.image} />
-			</View>
+			</View> */}
 
 			<View style={styles.screen}>
 				<TouchableOpacity style={{ ...StyleSheet.absoluteFillObject }} onPress={Keyboard.dismiss} />
@@ -148,11 +157,6 @@ const NewEntry = () => {
 						style={[styles.arrowContainer, { fontFamily: customFont }]}
 						onPress={submitPrompt}
 					>
-						{/* <Antdesign
-					name='rightcircleo'
-					color='#343434'
-					size={70}
-				/> */}
 						<EvilIcons
 							name='arrow-right'
 							color='#64CCC5'

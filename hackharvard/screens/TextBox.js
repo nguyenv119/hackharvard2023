@@ -35,7 +35,7 @@ export default function TextBox({ prompt, setPrompt, customFont }) {
 				multiline
 				value={prompt}
 				onChangeText={setPrompt}
-				placeholder="How are you feeling today?"
+				placeholder="Write your thoughts here..."
 				placeholderTextColor="rgba(255, 255, 255, 0.5)"
 				onBlur={() => {
 					Keyboard.dismiss()
