@@ -10,17 +10,17 @@ export default function TextBox({ prompt, setPrompt, customFont }) {
 		input: {
 			// width: inputWidth,
 			// height: inputHeight,
-			top: 70,
+			// top: 70,
 			width: '85%',
 			height: '80%',
 			borderColor: 'transparent',
-			backgroundColor: '#F2F0E4',
+			backgroundColor: '#001C30',
 			borderRadius: 10,
 			borderWidth: 1,
 			padding: 10,
 			fontFamily: customFont,
 			fontSize: 20,
-			color: '#666362',
+			color: '#64CCC5',
 			opacity: 0.8,
 		}
 	});
@@ -33,6 +33,7 @@ export default function TextBox({ prompt, setPrompt, customFont }) {
 				value={prompt}
 				onChangeText={setPrompt}
 				placeholder="How are you feeling today?"
+				placeholderTextColor="rgba(255, 255, 255, 0.5)"
 				// onFocus={() => {
 				// 	setInputWidth(400)
 				// 	setInputHeight(700)

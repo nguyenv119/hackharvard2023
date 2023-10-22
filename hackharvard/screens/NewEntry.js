@@ -42,7 +42,8 @@ const NewEntry = () => {
 		screen: {
 			justifyContent: 'center',
 			alignItems: 'center',
-			backgroundColor: '#F2F0E4',
+			// backgroundColor: '#F2F0E4',
+			backgroundColor: '#001C30',
 			flex: 1,
 		},
 		titleContainer: {
@@ -54,9 +55,10 @@ const NewEntry = () => {
 		title: {
 			fontFamily: customFont,
 			fontSize: 30,
-			color: '#343434',
-			top: 80,
-			left: 41,
+			color: 'white'
+			// color: '#343434',
+			// top: 60,
+			// left: 41,
 		},
 		input: {
 			width: '80%',
@@ -65,25 +67,22 @@ const NewEntry = () => {
 			padding: 10,
 			fontFamily: 'Caudex',
 		},
-		buttonText: {
-			color: 'green', // Example text color
-			fontSize: 18,
-			fontFamily: 'Caudex', // Apply the custom font to the button text
-		},
 		arrowContainer: {
 			alignItems: 'flex-end',
-			backgroundColor: '#F2F0E4',
+			backgroundColor: '#001C30',
 			borderTopColor: 'black',
 			paddingRight: 30,
 			paddingBottom: 30,
+			width: 90,
 		},
 		backContainer: {
 			alignItems: 'flex-start',
-			backgroundColor: '#F2F0E4',
+			backgroundColor: '#001C30',
 			paddingLeft: 20,
 			paddingTop: 50,
 			flexDirection: 'row',
 			alignItems: 'center',
+			color: 'white',
 		},
 		home: {
 			fontFamily: customFont,
@@ -91,6 +90,22 @@ const NewEntry = () => {
 			color: '#343434',
 			marginLeft: -10,
 		},
+		image: {
+			width: 200,
+			height: 200,
+			backgroundColor: '#001C30',
+			// zIndex: -1,
+		},
+		earthContainer: {
+			backgroundColor: '#001C30',
+			justifyContent: 'center',
+			alignItems: 'center',
+		},
+		arrowView: {
+			backgroundColor: '#001C30',
+			alignItems: 'flex-end',
+		}
+
 	});
 
 
@@ -99,17 +114,22 @@ const NewEntry = () => {
 			<View style={styles.backContainer}>
 				<EvilIcons
 					name='chevron-left'
-					color='brown'
+					color='#64CCC5'
 					size={55}
 				/>
 				{/* <Text style={styles.home}>
 					Home
 				</Text> */}
+				{/* <Text style={styles.title}>Add New Journal Entry</Text> */}
+				{/* <View style={styles.titleContainer}>
+
+				</View> */}
 
 			</View>
-			<View style={styles.titleContainer}>
-				<Text style={styles.title}>Add New Journal Entry</Text>
+			<View style={styles.earthContainer}>
+				<Image source={require('../assets/earthmoon.gif')} style={styles.image} />
 			</View>
+
 			<View style={styles.screen}>
 				<TouchableOpacity style={{ ...StyleSheet.absoluteFillObject }} onPress={Keyboard.dismiss} />
 				<TextBox prompt={prompt} setPrompt={setPrompt} customFont={customFont} />
@@ -119,7 +139,7 @@ const NewEntry = () => {
 			<KeyboardAvoidingView
 				behavior={Platform.OS === "ios" ? "padding" : "height"}
 			>
-				<View >
+				<View style={styles.arrowView}>
 					<TouchableOpacity
 						style={[styles.arrowContainer, { fontFamily: customFont }]}
 						onPress={submitPrompt}
@@ -131,7 +151,7 @@ const NewEntry = () => {
 				/> */}
 						<EvilIcons
 							name='arrow-right'
-							color='brown'
+							color='#64CCC5'
 							size={70}
 						/>
 
