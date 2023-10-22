@@ -6,6 +6,7 @@ import NewEntry from './screens/NewEntry';
 import Insights from './screens/Insights';
 import Loading from './screens/Loading';
 import EmotionRating from './screens/EmotionRating';
+import Mood from './screens/Mood';
 const Stack = createNativeStackNavigator();
 
 
@@ -19,7 +20,7 @@ export default function App() {
 
 	return (
 		<NavigationContainer>
-			<Stack.Navigator initialRouteName='NewEntry'>
+			<Stack.Navigator initialRouteName='Mood'>
 				{/* <Stack.Screen name="Home" component={HomeScreen} /> */}
 				<Stack.Screen
 					name="NewEntry"
@@ -30,6 +31,7 @@ export default function App() {
 				/>
 				<Stack.Screen name="Insights" component={Insights} />
 				<Stack.Screen name="Loading" component={Loading} options={{ headerShown: false }} />
+				<Stack.Screen name="Mood" component={Mood} />
 				<Stack.Screen name="EmotionRating" component={EmotionRating} options={{ headerShown: false }} />
 			</Stack.Navigator>
 
