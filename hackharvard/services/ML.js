@@ -32,11 +32,23 @@ export const extractEmotions = async (prompt) => {
 
         let data = await response.json();
         let answer = data.choices[0].message.content.trim();
-            
+
         let splitAnswer = answer.split('\n\n');
         let detailedResponse = splitAnswer.slice(0, splitAnswer.length - 1).join('\n\n');
         let emotionSummary = splitAnswer[splitAnswer.length - 1];
-        let percentage = emotionSummary;
+
+        // Parsing the summary to create the emotion-to-percentage dictionary
+        let percentDict = {};
+        let emotionsWithPercents = emotionSummary.split('; '); // Assumption is that the summary is '; ' separated.
+
+        emotionsWithPercents.forEach(item => {
+            let [emotion, percentValue] = item.split(': ');
+            if (emotion && percentValue) {
+                // Assuming the percentValue is a string like "30%", we remove the '%' and convert to a float
+                let percent = parseFloat(percentValue.replace('%', ''));
+                percentDict[emotion] = percent;
+            }
+        });
 
         // console.log(emotionSummary)
 
@@ -55,34 +67,24 @@ export const extractEmotions = async (prompt) => {
 			},
 			body: JSON.stringify(payload)
 		});
+        // Processing the second response to extract colors
+        answer = await response.json();
+        data = answer.choices[0].message.content.trim();
 
-		answer = await response.json();
-		data = answer.choices[0].message.content.trim();
+        let emotionColorDict = {};
+        let emotionsWithColors = data.split('\n'); // Assuming the emotions and colors are newline-separated
 
-        let percentArray = data.split('\n'); // Splitting by semicolon instead of newline
-		let percentDict = {};
-
-		percentArray.forEach(item => {
-			let [emotion, percent] = item.split(', ').map(s => s.trim());
-			percentDict[emotion] = percent;
-		});
-
-        // console.log(answer)
-        // console.log(data)
-
-		let dataArray = data.split('\n'); // Splitting by semicolon instead of newline
-		let emotionColorDict = {};
-
-		dataArray.forEach(item => {
-			let [emotion, color] = item.split(': ').map(s => s.trim());
-			emotionColorDict[emotion] = color;
-		});
-		// console.log(emotionColorDict);
+        emotionsWithColors.forEach(item => {
+            let [emotion, color] = item.split(': ');
+            if (emotion && color) {
+                emotionColorDict[emotion.trim()] = color.trim();
+            }
+        });
 
         return { 
             detailedResponse: detailedResponse,
             emotionColor: emotionColorDict,
-            emotionPercent: percentDict
+            emotionPercent: percentDict // returning the dictionary with emotions as keys and percentages as values
         };
 
     } catch (error) {
