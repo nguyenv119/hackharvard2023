@@ -17,8 +17,7 @@ This was our first time developing a mobile application, and we overestimated ou
 During development, we faced challenges such as time management, task allocation, and teamwork problems in solving technical issues. We had to set a cut-off point for our technical development and started writing our project devpost. This is a great lesson for every one of us, in a limited time frame, good time management is key.
 
 ## What's next for Soular
-With the data collected from the analysis generated from our AI model using the OpenAI API, we can compare user inputted mood data with the AI-generated data, and further compare and generate 
-
+With the data collected from the analysis generated from the journal entries, we can use the user-inputted mood data with the AI-generated data, and further compare and generate a holistic analysis of the data, providing a fresh perspective to enhance users ability to learn about themselves and grow as a person.
 
 ## PROBLEM STATEMENT
 In an era where mental well-being is often overlooked, Soular seeks to bridge the gap between mental and physical health. Our research indicates that mental health remains a neglected global issue, impacting the attainment of the United Nations 2030 Sustainable Development Goals. Additionally, Asians often suffer from traditional mental health stigma.
