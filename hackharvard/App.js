@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useFonts } from 'expo-font';
 import NewEntry from './screens/NewEntry';
 import Insights from './screens/Insights';
+import Loading from './screens/Loading';
 import EmotionRating from './screens/EmotionRating';
 const Stack = createNativeStackNavigator();
 
@@ -28,7 +29,8 @@ export default function App() {
 					}}
 				/>
 				<Stack.Screen name="Insights" component={Insights} />
-				<Stack.Screen name="EmotionRating" component={EmotionRating} />
+				<Stack.Screen name="Loading" component={Loading} options={{ headerShown: false }} />
+				<Stack.Screen name="EmotionRating" component={EmotionRating} options={{ headerShown: false }} />
 			</Stack.Navigator>
 
 		</NavigationContainer>
