@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 // import { View, TextInput, Button, StyleSheet, Alert } from 'react-native';
-import { Image, SafeAreaView, Pressable, View, Keyboard, Text, TouchableOpacity, StyleSheet, Alert, KeyboardAvoidingView } from 'react-native';
+import { Image, SafeAreaView, Pressable, View, Keyboard, Text, TouchableOpacity, StyleSheet, Alert, KeyboardAvoidingView, Platform } from 'react-native';
 import { useNavigation } from '@react-navigation/native'; // Import this if you're using React Navigation 5.x or above
 import { extractEmotions } from '../services/ML'; // Adjust the import statement to your file structure
 import { useFonts } from 'expo-font';
