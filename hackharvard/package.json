@@ -10,6 +10,7 @@
 	},
 	"dependencies": {
 		"@expo/webpack-config": "^19.0.0",
+		"@react-native-community/slider": "^4.4.3",
 		"@react-navigation/native": "^6.1.9",
 		"@react-navigation/native-stack": "^6.9.15",
 		"@rneui/base": "^4.0.0-rc.7",
@@ -24,6 +25,8 @@
 		"react-native-icons": "^0.7.1",
 		"react-native-safe-area-context": "4.6.3",
 		"react-native-screens": "~3.22.0",
+		"react-native-svg-charts": "^5.4.0",
+		"react-native-svg-web": "^1.0.9",
 		"react-native-web": "~0.19.6"
 	},
 	"devDependencies": {
