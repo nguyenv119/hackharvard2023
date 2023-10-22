@@ -1,4 +1,4 @@
-# Soular - HackHarvard 2023 Comet
+# Soular - HackHarvard 2023 
 
 ## Elevator Pitch:
 Soular is a revolutionary journaling and mood-tracking app that bridges the gap between mental and physical health. Our AI-powered platform illuminates your emotional universe, offering deep insights and fostering personal growth.
