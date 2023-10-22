@@ -22,11 +22,11 @@ const NewEntry = () => {
 		if (prompt.trim()) {
 			try {
 				navigation.navigate('Loading');
-				const { detailedResponse, emotionSummary } = await extractEmotions(prompt);
-				navigation.navigate('EmotionRating', {
-					detailedResponse: detailedResponse,
-					emotions: emotionSummary
-				});
+				// const { detailedResponse, emotionSummary } = await extractEmotions(prompt);
+				// navigation.navigate('EmotionRating', {
+				// 	detailedResponse: detailedResponse,
+				// 	emotions: emotionSummary
+				// });
 			} catch (error) {
 				console.error(error);
 				Alert.alert('Error', 'There was an error processing your request.');
