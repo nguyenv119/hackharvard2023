@@ -1,45 +1,43 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, Button, StyleSheet, ScrollView } from 'react-native';
 import { PieChart } from 'react-native-svg-charts';
 
 const EmotionRating = ({ route, navigation }) => {
-    const { detailedResponse, emotions, percent } = route.params;
+    const { emotions, percent } = route.params;
 
-    // Prepare data for the pie chart
-	// console.log(emotions)
-    const chartData = Object.keys(emotions).map((emotion) => {
-        // Get the color for this emotion
-        const color = emotions[emotion];
-        // console.log(color)
-        // Get the percentage for this emotion
-        const value = percent[emotion];
+    console.log(emotions);
+    console.log(percent);
 
-        // Create a data point for this emotion
-        return {
-            value,  // value is the percentage of this emotion
-            svg: { fill: color }, // fill color for the slice
-            key: `pie-${emotion}`, // unique key for React list items
-            arc: { outerRadius: '100%', cornerRadius: 5 },
-            label: emotion, // the label for this slice
-        };
-    });
+    const chartData = Object.keys(emotions).map((emotion) => ({
+        value: percent[emotion],
+        svg: { fill: emotions[emotion] },
+        key: `pie-${emotion}`,
+        label: emotion,
+    }));
+
+    const EmotionList = Object.keys(emotions).map((emotion) => (
+		console.log(percent[emotion]),
+        <Text key={emotion} style={[styles.emotionText, { color: emotions[emotion] }]}>
+            {emotion}: {(percent[emotion] * 100).toFixed(2)}%
+        </Text>
+    ));
 
     return (
         <View style={styles.screen}>
             <Text style={styles.title}>Emotion Ratings:</Text>
             <View style={styles.chartContainer}>
-                <PieChart 
-                    style={styles.chart} 
-                    data={chartData} 
-                    innerRadius={'45%'} 
-                    outerRadius={'80%'} 
+                <PieChart
+                    style={styles.chart}
+                    data={chartData}
+                    innerRadius={'45%'}
+                    outerRadius={'80%'}
                     labelRadius={'90%'}
-                    // If you want to display labels on the chart, you can add a 'label' prop to your PieChart component
-                    // and define a function to render labels based on your data.
-                    // Uncomment the line below to enable chart labels.
-                    // label={({ dataEntry }) => dataEntry.label + ' ' + (dataEntry.value * 100).toFixed(0) + '%'}
+                    label={({ dataEntry }) => dataEntry.label + ' ' + (dataEntry.value * 100).toFixed(0) + '%'}
                 />
             </View>
+            <ScrollView contentContainerStyle={styles.emotionsContainer}>
+                {EmotionList}
+            </ScrollView>
             <Button title="Confirm" onPress={() => navigation.goBack()} />
         </View>
     );
@@ -61,24 +59,24 @@ const styles = StyleSheet.create({
         position: 'absolute',  // positioned absolutely at the top
         top: 10                // little margin from the top
     },
-    chartContainer: {
-        flex: 1,             // take up remaining space
-        justifyContent: 'center', // center vertically
-        alignItems: 'center',     // center horizontally
-        width: '100%',       // full width
-        borderColor: 'blue',
-        borderWidth: 2,      // Changed from '2px' to 2
+	chartContainer: {
+        flex: 5, // adjust this value as needed
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+        // removed borderColor and borderWidth for simplicity
     },
-	chart: {
-		position: 'absolute',
-		top: '10%',
-		left: '10%',
-		width: '80%',
-		height: '80%',
-		margin: 'auto',
-	},	
+    chart: {
+        width: '100%', // make chart use the full width of its container
+        height: '80%', // adjust as needed
+    },
+    emotionsContainer: {
+        flex: 3, // takes up less space than the chart
+        padding: 20, // inner spacing
+    },
     emotionText: {
-        marginBottom: 5,
+        fontSize: 18,
+        margin: 5,
     },
 });
 

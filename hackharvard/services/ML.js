@@ -59,6 +59,14 @@ export const extractEmotions = async (prompt) => {
 		answer = await response.json();
 		data = answer.choices[0].message.content.trim();
 
+        let percentArray = data.split('\n'); // Splitting by semicolon instead of newline
+		let percentDict = {};
+
+		percentArray.forEach(item => {
+			let [emotion, percent] = item.split(', ').map(s => s.trim());
+			percentDict[emotion] = percent;
+		});
+
         // console.log(answer)
         // console.log(data)
 
@@ -74,7 +82,7 @@ export const extractEmotions = async (prompt) => {
         return { 
             detailedResponse: detailedResponse,
             emotionColor: emotionColorDict,
-            emotionPercent: percentage
+            emotionPercent: percentDict
         };
 
     } catch (error) {
