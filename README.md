@@ -25,30 +25,4 @@ During development, we faced challenges such as time management, task allocation
 ## What's next for Soular
 With the data collected from the analysis generated from the journal entries, we can use the user-inputted mood data with the AI-generated data, and further compare and generate a holistic analysis of the data, providing a fresh perspective to enhance users ability to learn about themselves and grow as a person.
 
-## BUSINESS MODEL:
-
-### Industry:
-Digital Health & Wellness
-
-### Demand Drivers:
-- Convenience and accessibility for real-time entries.
-- Eliminates the need for physical journals.
-- Organizational benefits: search, tags, categories, folders.
-- Multimedia integration: photos, videos, audio.
-
-### Challenges:
-- Maintaining consistent user journaling habits.
-- Transitioning users from physical to digital journals.
-- Avoiding complicated or cluttered interfaces.
-- Establishing a sustainable business model and monetization strategy.
-
-### Opportunities
-
-- Growing demand due to increasing digital lifestyles.
-- Portability and seamless synchronization across devices.
-- Integration with other personal growth apps.
-- Leveraging data analytics and natural language processing for insights.
-
-
-
 
