@@ -48,6 +48,7 @@ const NewEntry = () => {
 		titleContainer: {
 			width: '100%',
 			position: 'absolute',
+			top: 50,
 			zIndex: 1,
 		},
 		title: {
@@ -75,13 +76,37 @@ const NewEntry = () => {
 			borderTopColor: 'black',
 			paddingRight: 30,
 			paddingBottom: 30,
-		}
-
+		},
+		backContainer: {
+			alignItems: 'flex-start',
+			backgroundColor: '#F2F0E4',
+			paddingLeft: 20,
+			paddingTop: 50,
+			flexDirection: 'row',
+			alignItems: 'center',
+		},
+		home: {
+			fontFamily: customFont,
+			fontSize: 25,
+			color: '#343434',
+			marginLeft: -10,
+		},
 	});
 
 
 	return (
 		<>
+			<View style={styles.backContainer}>
+				<EvilIcons
+					name='chevron-left'
+					color='brown'
+					size={55}
+				/>
+				{/* <Text style={styles.home}>
+					Home
+				</Text> */}
+
+			</View>
 			<View style={styles.titleContainer}>
 				<Text style={styles.title}>Add New Journal Entry</Text>
 			</View>
@@ -106,7 +131,7 @@ const NewEntry = () => {
 				/> */}
 						<EvilIcons
 							name='arrow-right'
-							color='#343434'
+							color='brown'
 							size={70}
 						/>
 
