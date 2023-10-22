@@ -94,12 +94,15 @@ const NewEntry = () => {
 			width: 200,
 			height: 200,
 			backgroundColor: '#001C30',
+			marginTop: -50,
+			marginRight: -200,
 			// zIndex: -1,
 		},
 		earthContainer: {
 			backgroundColor: '#001C30',
 			justifyContent: 'center',
 			alignItems: 'center',
+
 		},
 		arrowView: {
 			backgroundColor: '#001C30',
@@ -127,6 +130,7 @@ const NewEntry = () => {
 
 			</View>
 			<View style={styles.earthContainer}>
+				<TouchableOpacity style={{ ...StyleSheet.absoluteFillObject }} onPress={Keyboard.dismiss} />
 				<Image source={require('../assets/earthmoon.gif')} style={styles.image} />
 			</View>
 
