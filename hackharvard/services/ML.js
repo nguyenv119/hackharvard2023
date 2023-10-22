@@ -67,28 +67,42 @@ export const extractEmotions = async (prompt) => {
 			},
 			body: JSON.stringify(payload)
 		});
-        // Processing the second response to extract colors
-        answer = await response.json();
-        data = answer.choices[0].message.content.trim();
-
-        let emotionColorDict = {};
-        let emotionsWithColors = data.split('\n'); // Assuming the emotions and colors are newline-separated
-
-        emotionsWithColors.forEach(item => {
-            let [emotion, color] = item.split(': ');
-            if (emotion && color) {
-                emotionColorDict[emotion.trim()] = color.trim();
+                // Processing the second response to extract colors
+                answer = await response.json();
+                data = answer.choices[0].message.content.trim();
+        
+                // Creating a dictionary for emotion-color pairs
+                let emotionColorDict = {};
+                let lines = data.split(';'); // Split by semicolons to separate each item, assuming items end with a semicolon
+        
+                lines.forEach(line => {
+                    line = line.trim(); // Trimming whitespace
+                    // Splitting at the newline character to separate different emotion-color pairs
+                    let pairs = line.split('\n'); 
+                    pairs.forEach(pair => {
+                        let parts = pair.split(':'); // Split by colon to get emotion and color separately
+                        if (parts.length === 2) { // Confirming there's an emotion part and a color part
+                            let emotion = parts[0].trim();
+                            let color = parts[1].trim();
+                            if (color && color.startsWith('#') && color.length === 7) { // Basic validation for hex color code
+                                emotionColorDict[emotion] = color; // Add to dictionary
+                            } else {
+                                console.error(`Invalid color format for emotion "${emotion}": "${color}"`);
+                            }
+                        } else {
+                            console.error(`Invalid line format detected: "${pair}"`);
+                        }
+                    });
+                });
+        
+                return { 
+                    detailedResponse: detailedResponse,
+                    emotionColor: emotionColorDict,
+                    emotionPercent: percentDict // Returning the dictionary with emotions as keys and percentages as values
+                };
+        
+            } catch (error) {
+                console.error('Error calling OpenAI API:', error.message);
+                throw error;
             }
-        });
-
-        return { 
-            detailedResponse: detailedResponse,
-            emotionColor: emotionColorDict,
-            emotionPercent: percentDict // returning the dictionary with emotions as keys and percentages as values
-        };
-
-    } catch (error) {
-        console.error('Error calling OpenAI API:', error.message);
-        throw error;
-    }
 };

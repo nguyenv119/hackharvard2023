@@ -6,8 +6,8 @@ const EmotionRating = ({ route, navigation }) => {
 	const { emotions, percent } = route.params;
 
 
-	console.log(emotions);
-	console.log(percent);
+    console.log(emotions);
+    console.log(percent);
 
 	const chartData = Object.keys(emotions).map((emotion) => ({
 		value: percent[emotion],
@@ -16,12 +16,11 @@ const EmotionRating = ({ route, navigation }) => {
 		label: emotion,
 	}));
 
-	const EmotionList = Object.keys(emotions).map((emotion) => (
-		console.log(percent[emotion]),
-		<Text key={emotion} style={[styles.emotionText, { color: emotions[emotion] }]}>
-			{emotion}: {(percent[emotion]).toFixed(2)}%
-		</Text>
-	));
+    const EmotionList = Object.keys(emotions).map((emotion) => (
+        <Text key={emotion} style={[styles.emotionText, { color: emotions[emotion] }]}>
+            {emotion}: {(percent[emotion]).toFixed(2)}%
+        </Text>
+    ));
 
 	return (
 		<View style={styles.screen}>
@@ -48,21 +47,19 @@ const EmotionRating = ({ route, navigation }) => {
 
 
 const styles = StyleSheet.create({
-	screen: {
-		flex: 1,
-		justifyContent: 'center', // center vertically
-		alignItems: 'center',     // center horizontally
-		backgroundColor: 'white',
-		borderColor: 'green',
-		borderWidth: 2           // Changed from '2px' to 2 because React Native does not recognize 'px' units
-	},
-	title: {
-		fontSize: 50,
-		marginBottom: 20, // spacing after the title
-		position: 'absolute',  // positioned absolutely at the top
-		top: 60,                // little margin from the top
-		fontFamily: 'Caudex',
-	},
+    screen: {
+        flex: 1,
+        justifyContent: 'center', // center vertically
+        alignItems: 'center',     // center horizontally
+        backgroundColor: 'white',
+        borderWidth: 2           // Changed from '2px' to 2 because React Native does not recognize 'px' units
+    },
+    title: {
+        fontSize: 24,
+        marginBottom: 20, // spacing after the title
+        position: 'absolute',  // positioned absolutely at the top
+        top: 10                // little margin from the top
+    },
 	chartContainer: {
 		flex: 5, // adjust this value as needed
 		justifyContent: 'center',
