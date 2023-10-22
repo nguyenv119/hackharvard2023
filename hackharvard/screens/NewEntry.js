@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 // import { View, TextInput, Button, StyleSheet, Alert } from 'react-native';
-import { Image, View, Keyboard, Text, TouchableOpacity, StyleSheet, Alert, KeyboardAvoidingView } from 'react-native';
+import { Image, Platform, View, Keyboard, Text, TouchableOpacity, StyleSheet, Alert, KeyboardAvoidingView } from 'react-native';
 import { useNavigation } from '@react-navigation/native'; // Import this if you're using React Navigation 5.x or above
 import { extractEmotions } from '../services/ML'; // Adjust the import statement to your file structure
 import { useFonts } from 'expo-font';
@@ -13,21 +13,20 @@ const NewEntry = () => {
 
 	const [fontsLoaded] = useFonts({
 		'Caudex': require('../assets/fonts/Caudex-Regular.ttf'),
-
 	});
 
 	const customFont = fontsLoaded ? 'Caudex' : 'Arial';
-
 	const navigation = useNavigation(); // This hook is for navigation
 
 	const submitPrompt = async () => {
-
 		if (prompt.trim()) {
 			try {
 				navigation.navigate('Loading');
-				const extractedEmotions = await extractEmotions(prompt);
-				navigation.navigate('EmotionRating', { emotions: extractedEmotions });
-
+				const { detailedResponse, emotionSummary } = await extractEmotions(prompt);
+				navigation.navigate('EmotionRating', { 
+					detailedResponse: detailedResponse,
+					emotions: emotionSummary 
+				});
 			} catch (error) {
 				console.error(error);
 				Alert.alert('Error', 'There was an error processing your request.');

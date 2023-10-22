@@ -29,104 +29,84 @@ const colorsDictionary = {
 };
 
 const EmotionRating = ({ route, navigation }) => {
-	const { emotions } = route.params;
-	const [emotionColors, setEmotionColors] = useState({});
-	const [adjustedEmotions, setAdjustedEmotions] = useState(emotions);
+    const { emotions } = route.params;
+    const [emotionColors, setEmotionColors] = useState({});
 
-	console.log(emotions)
+    useEffect(() => {
+        getEmotionColors(emotions).then(mapping => {
+            console.log('Color Mapping:', mapping);
+            setEmotionColors(mapping);
+			console.log()
+        }).catch(error => {
+            console.error("Error setting emotion colors:", error.message);
+        });
+    }, [emotions]);
 
-	useEffect(() => {
-		getEmotionColors(emotions).then(mapping => {
-			setEmotionColors(mapping);
-		}).catch(error => {
-			console.error("Error setting emotion colors:", error.message);
-		});
-	}, [emotions]);
+    const chartData = Object.keys(emotions).map((emotion) => {
+        const color = emotionColors[emotion] || '#000'; 
+		console.log(color)
+        return {
+            value: emotions[emotion],  // this should be a number (percentage)
+            svg: { fill: color },
+            key: `pie-${emotion}`,  // unique string value for react list
+            arc: { outerRadius: '100%', cornerRadius: 5 },  // updated as per library's requirement
+            label: emotion,
+        };
+    });
 
-	const adjustEmotionValues = (changedEmotion, newValue) => {
-		const delta = newValue - adjustedEmotions[changedEmotion];
-		const otherEmotions = Object.keys(adjustedEmotions).filter(emotion => emotion !== changedEmotion);
+	console.log(chartData);
 
-		const adjustmentPerEmotion = delta / otherEmotions.length;
-
-		const updatedEmotions = {};
-		for (let emotion in adjustedEmotions) {
-			if (emotion === changedEmotion) {
-				updatedEmotions[emotion] = newValue;
-			} else {
-				updatedEmotions[emotion] = Math.round(adjustedEmotions[emotion] - adjustmentPerEmotion);  // Use Math.round to ensure integer values
-			}
-		}
-		setAdjustedEmotions(updatedEmotions);
-	};
-
-	const handleSliderChange = (emotion, newValue) => {
-		adjustEmotionValues(emotion, newValue);
-	};
-
-	const chartData = Object.entries(adjustedEmotions).map(([emotion, percentage]) => ({
-		key: emotion,
-		value: percentage,
-		svg: { fill: emotionColors[emotion] || '#000' }, // default to black if no color mapping
-		arc: { outerRadius: percentage + '%', padAngle: 0 }, // Adjust this line for the pie chart
-		label: emotion,
-	}));
-
-	return (
-		<View style={styles.screen}>
-			<Text style={styles.title}>Adjust your emotion ratings:</Text>
-			<PieChart
-				style={styles.chart}
-				data={chartData}
-			/>
-			{Object.keys(adjustedEmotions).map((emotion) => (
-				<View key={emotion} style={styles.sliderContainer}>
-					<Text style={styles.emotionText}>{emotion}</Text>
-					{/* <Slider
-                        style={styles.slider}
-                        minimumValue={1}
-                        maximumValue={10}
-                        step={2}  
-                        value={adjustedEmotions[emotion]}
-                        onValueChange={(newValue) => handleSliderChange(emotion, newValue)}
-                    /> */}
-					<Text>{Math.round(adjustedEmotions[emotion])}</Text>
+    return (
+        <View style={styles.screen}>
+            <Text style={styles.title}>Emotion Ratings:</Text>
+			<View style={styles.chartContainer}>
+    				<View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+						<PieChart style={styles.chart} data={chartData} />
+					</View>
 				</View>
-			))}
-			<Button title="Confirm" onPress={() => navigation.goBack()} />
-		</View>
-	);
+            <Button title="Confirm" onPress={() => navigation.goBack()} />
+        </View>
+    );
+	
 };
 
 
 const styles = StyleSheet.create({
-	screen: {
-		flex: 1,
-		padding: 10,
-		justifyContent: 'space-between',
-	},
-	title: {
-		alignSelf: 'center',
-		marginBottom: 10,
-	},
+    screen: {
+        flex: 1,
+        justifyContent: 'center', // center vertically
+        alignItems: 'center',     // center horizontally
+        backgroundColor: 'white',
+        borderColor: 'green',
+        borderWidth: 2           // Changed from '2px' to 2 because React Native does not recognize 'px' units
+    },
+    title: {
+        fontSize: 24,
+        marginBottom: 20, // spacing after the title
+        position: 'absolute',  // positioned absolutely at the top
+        top: 10                // little margin from the top
+    },
+    chartContainer: {
+        flex: 1,             // take up remaining space
+        justifyContent: 'center', // center vertically
+        alignItems: 'center',     // center horizontally
+        width: '100%',       // full width
+        borderColor: 'blue',
+        borderWidth: 2,      // Changed from '2px' to 2
+    },
 	chart: {
-		height: 350,
-		alignSelf: 'center',
-	},
-	sliderContainer: {
-		flexDirection: 'column',
-		justifyContent: 'center',
-		alignItems: 'center',
-		marginVertical: 10,
-	},
-	emotionText: {
-		marginBottom: 5,
-	},
-	slider: {
-		width: '100%',
-		marginVertical: 10,
-	},
+		position: 'absolute',
+		top: '10%',
+		left: '10%',
+		width: '80%',
+		height: '80%',
+		margin: 'auto',
+	},	
+    emotionText: {
+        marginBottom: 5,
+    },
 });
+
 
 const getEmotionColors = async (emotionSummary) => {
 	// console.log(emotionSummary)
