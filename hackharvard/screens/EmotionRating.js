@@ -10,11 +10,12 @@ export default EmotionRatingScreen = ({ route, navigation }) => {
 
 	return (
 		<View style={styles.screen}>
+
 			<Text>Adjust your emotion ratings:</Text>
 			{Object.keys(emotions).map((emotion) => (
 				<View key={emotion} style={styles.sliderContainer}>
 					<Text>{emotion}</Text>
-					<Slider
+					{/* <Slider
 						style={styles.slider}
 						minimumValue={1}
 						maximumValue={10}
@@ -23,7 +24,7 @@ export default EmotionRatingScreen = ({ route, navigation }) => {
 						onValueChange={(newValue) => {
 							// update the corresponding emotion rating
 						}}
-					/>
+					/> */}
 					<Text>{emotions[emotion]}</Text>
 				</View>
 			))}

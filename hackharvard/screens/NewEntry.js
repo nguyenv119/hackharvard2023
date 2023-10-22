@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 // import { View, TextInput, Button, StyleSheet, Alert } from 'react-native';
-import { Image, View, Keyboard, Text, TouchableOpacity, StyleSheet, Alert, KeyboardAvoidingView, ScrollView } from 'react-native';
+import { Image, View, Keyboard, Text, TouchableOpacity, StyleSheet, Alert, KeyboardAvoidingView } from 'react-native';
 import { useNavigation } from '@react-navigation/native'; // Import this if you're using React Navigation 5.x or above
 import { extractEmotions } from '../services/ML'; // Adjust the import statement to your file structure
 import { useFonts } from 'expo-font';
@@ -11,7 +11,6 @@ import EvilIcons from 'react-native-vector-icons/EvilIcons';
 
 const NewEntry = () => {
 	const [prompt, setPrompt] = useState('');
-	const [padding, setPadding] = useState(0);
 	const [fontsLoaded] = useFonts({
 		'Caudex': require('../assets/fonts/Caudex-Regular.ttf'),
 
@@ -22,10 +21,13 @@ const NewEntry = () => {
 	const navigation = useNavigation(); // This hook is for navigation
 
 	const submitPrompt = async () => {
+
 		if (prompt.trim()) {
 			try {
+				navigation.navigate('Loading');
 				const extractedEmotions = await extractEmotions(prompt);
 				navigation.navigate('EmotionRating', { emotions: extractedEmotions });
+
 			} catch (error) {
 				console.error(error);
 				Alert.alert('Error', 'There was an error processing your request.');
@@ -41,10 +43,6 @@ const NewEntry = () => {
 			justifyContent: 'center',
 			alignItems: 'center',
 			backgroundColor: '#F2F0E4',
-			// position: 'absolute',
-			// top: 30,
-			// height: '100%',
-			// width: '100%',
 			flex: 1,
 		},
 		titleContainer: {
@@ -56,9 +54,8 @@ const NewEntry = () => {
 			fontFamily: customFont,
 			fontSize: 30,
 			color: '#343434',
-			// position: 'absolute',
 			top: 80,
-			left: 30,
+			left: 41,
 		},
 		input: {
 			width: '80%',
@@ -71,10 +68,6 @@ const NewEntry = () => {
 			color: 'green', // Example text color
 			fontSize: 18,
 			fontFamily: 'Caudex', // Apply the custom font to the button text
-		},
-		image: {
-			width: 100,
-			height: 100,
 		},
 		arrowContainer: {
 			alignItems: 'flex-end',
@@ -89,21 +82,12 @@ const NewEntry = () => {
 
 	return (
 		<>
-
-
 			<View style={styles.titleContainer}>
 				<Text style={styles.title}>Add New Journal Entry</Text>
 			</View>
 			<View style={styles.screen}>
-
 				<TouchableOpacity style={{ ...StyleSheet.absoluteFillObject }} onPress={Keyboard.dismiss} />
 				<TextBox prompt={prompt} setPrompt={setPrompt} customFont={customFont} />
-
-				{/* <Button title="Continue" titleStyle={{ fontFamily: customFont }}  onPress={() => submitPrompt} /> */}
-				{/* <View style={styles.container}>
-					<Image source={require('../assets/sadness.gif')} style={styles.image} />
-				</View> */}
-
 			</View>
 
 
@@ -111,7 +95,6 @@ const NewEntry = () => {
 				behavior={Platform.OS === "ios" ? "padding" : "height"}
 			>
 				<View >
-
 					<TouchableOpacity
 						style={[styles.arrowContainer, { fontFamily: customFont }]}
 						onPress={submitPrompt}
@@ -121,7 +104,6 @@ const NewEntry = () => {
 					color='#343434'
 					size={70}
 				/> */}
-
 						<EvilIcons
 							name='arrow-right'
 							color='#343434'
@@ -133,7 +115,6 @@ const NewEntry = () => {
 			</KeyboardAvoidingView >
 
 		</>
-
 	);
 };
 

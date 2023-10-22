@@ -1,9 +1,11 @@
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useFonts } from 'expo-font';
 import NewEntry from './screens/NewEntry';
 import Insights from './screens/Insights';
-import { useFonts } from 'expo-font';
+import Loading from './screens/Loading';
+import EmotionRating from './screens/EmotionRating';
 const Stack = createNativeStackNavigator();
 
 
@@ -24,27 +26,11 @@ export default function App() {
 					component={NewEntry}
 					options={{
 						headerShown: false,
-						// title: 'Add New Journal Entry',
-						// headerStyle: {
-						// 	backgroundColor: '#F2F0E4',
-						// 	width: 0,
-						// 	height: 0,
-						// },
-						// headerTintColor: '',
-						// headerTitleStyle: {
-						// 	fontWeight: 'bold',
-						// 	fontFamily: customFont,
-						// 	fontSize: 23,
-						// 	shadowColor: 'black',
-						// 	shadowOffset: { width: 2, height: 5 },
-						// 	shadowOpacity: 1,
-						// 	shadowRadius: 2,
-						// 	elevation: 5,
-						// },
-
 					}}
 				/>
 				<Stack.Screen name="Insights" component={Insights} />
+				<Stack.Screen name="Loading" component={Loading} options={{ headerShown: false }} />
+				<Stack.Screen name="EmotionRating" component={EmotionRating} options={{ headerShown: false }} />
 			</Stack.Navigator>
 
 		</NavigationContainer>
