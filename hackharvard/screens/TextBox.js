@@ -9,9 +9,7 @@ export default function TextBox({ prompt, setPrompt, customFont }) {
 
 	const styles = StyleSheet.create({
 		input: {
-			// width: inputWidth,
-			// height: inputHeight,
-			// top: 70,
+			top: -50,
 			width: '85%',
 			height: '80%',
 			borderColor: 'transparent',
@@ -35,7 +33,7 @@ export default function TextBox({ prompt, setPrompt, customFont }) {
 				multiline
 				value={prompt}
 				onChangeText={setPrompt}
-				placeholder="Write your thoughts here..."
+				placeholder="How are you doing..."
 				placeholderTextColor="rgba(255, 255, 255, 0.5)"
 				onBlur={() => {
 					Keyboard.dismiss()

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 // import { View, TextInput, Button, StyleSheet, Alert } from 'react-native';
-import { Image, Platform, View, Keyboard, Text, TouchableOpacity, StyleSheet, Alert, KeyboardAvoidingView } from 'react-native';
+import { Image, SafeAreaView, Pressable, View, Keyboard, Text, TouchableOpacity, StyleSheet, Alert, KeyboardAvoidingView } from 'react-native';
 import { useNavigation } from '@react-navigation/native'; // Import this if you're using React Navigation 5.x or above
 import { extractEmotions } from '../services/ML'; // Adjust the import statement to your file structure
 import { useFonts } from 'expo-font';
@@ -23,9 +23,9 @@ const NewEntry = () => {
 			try {
 				navigation.navigate('Loading');
 				const { detailedResponse, emotionSummary } = await extractEmotions(prompt);
-				navigation.navigate('EmotionRating', { 
+				navigation.navigate('EmotionRating', {
 					detailedResponse: detailedResponse,
-					emotions: emotionSummary 
+					emotions: emotionSummary
 				});
 			} catch (error) {
 				console.error(error);
@@ -84,27 +84,53 @@ const NewEntry = () => {
 			color: 'white',
 		},
 		image: {
-			width: 200,
-			height: 200,
+			width: 150,
+			height: 150,
 			backgroundColor: '#001C30',
 			marginTop: -50,
 			marginRight: -200,
-			// zIndex: -1,
 		},
 		earthContainer: {
 			backgroundColor: '#001C30',
-			justifyContent: 'center',
 			alignItems: 'center',
-
 		},
 		arrowView: {
 			backgroundColor: '#001C30',
 			alignItems: 'flex-end',
 		},
+		date: {
+			color: 'white',
+			fontFamily: customFont,
+			fontSize: 30,
+			paddingLeft: 40,
+			paddingTop: 10,
+		},
+		dateButton: {
+			color: 'white',
+			fontFamily: customFont,
+			fontSize: 20,
+			paddingLeft: 20,
+			paddingTop: 10,
+			width: 130,
+			zIndex: 0,
+			justifyContent: 'center',
+			opacity: 0.8,
+		},
+		datePickerContainer: {
+			backgroundColor: '#001C30',
+			width: '100%',
+			fontFamily: customFont,
+			paddingTop: 40,
+			paddingBottom: 20,
+			paddingLeft: 20,
+			alignSelf: 'left',
+			zIndex: 0,
+
+		}
 
 	});
 	const [date, setDate] = useState(new Date(1598051730000));
-	// const [mode, setMode] = useState('date');
+	const [mode, setMode] = useState('date');
 	const [show, setShow] = useState(false);
 
 	const onChange = (event, selectedDate) => {
@@ -113,7 +139,16 @@ const NewEntry = () => {
 		setDate(currentDate);
 	};
 
+	const showMode = (currentMode) => {
+		setShow(true);
+		setMode(currentMode);
+	};
 
+	const showDatepicker = () => {
+		showMode('date');
+	};
+
+	const options = { year: 'numeric', month: 'long', day: 'numeric' };
 
 	return (
 		<>
@@ -126,28 +161,35 @@ const NewEntry = () => {
 
 			</View>
 
+			<SafeAreaView style={styles.datePickerContainer}>
+				<Text style={styles.date}>{date.toLocaleString('en-US', options)}</Text>
+				<Pressable onPress={showDatepicker} title="Date" style={styles.dateButton} >
+					<Text style={styles.dateButton}>Select Date</Text>
+				</Pressable>
 
-			<DateTimePicker
-				testID="dateTimePicker"
-				value={date}
-				// mode={mode}
-				is24Hour={true}
-				onChange={onChange}
-				display="default"
-
-			/>
-
-			{/* <View style={styles.earthContainer}>
+			</SafeAreaView>
+			<View style={styles.earthContainer}>
 				<TouchableOpacity style={{ ...StyleSheet.absoluteFillObject }} onPress={Keyboard.dismiss} />
 				<Image source={require('../assets/earthmoon.gif')} style={styles.image} />
-			</View> */}
+			</View>
 
 			<View style={styles.screen}>
 				<TouchableOpacity style={{ ...StyleSheet.absoluteFillObject }} onPress={Keyboard.dismiss} />
 				<TextBox prompt={prompt} setPrompt={setPrompt} customFont={customFont} />
 			</View>
-
-
+			<SafeAreaView style={styles.datePickerContainer}>
+				{show && (
+					<DateTimePicker
+						testID="dateTimePicker"
+						value={date}
+						mode={mode}
+						is24Hour={true}
+						onChange={onChange}
+						display='spinner'
+						textColor='white'
+					/>
+				)}
+			</SafeAreaView>
 			<KeyboardAvoidingView
 				behavior={Platform.OS === "ios" ? "padding" : "height"}
 			>
