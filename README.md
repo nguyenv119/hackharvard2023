@@ -27,6 +27,8 @@ In the future, we plan to [Outline future development plans]. Soular is committe
 ## Built with:
 - Languages: JS
 - Frameworks: Expo, React Native
+
+
 - Platforms: IOS, Android
 - APIs: TerraAPI, OpenAI API
 
@@ -68,8 +70,13 @@ Digital Health & Wellness
 - Establishing a sustainable business model and monetization strategy.
 
 ### Opportunities
+
 - Growing demand due to increasing digital lifestyles.
 - Portability and seamless synchronization across devices.
 - Integration with other personal growth apps.
 - Leveraging data analytics and natural language processing for insights.
+
+![PNG image](https://github.com/nguyenv119/hackharvard2023/assets/111405053/60c952cf-6cc3-4e64-8f77-8acbd01fafc9)
+![PNG image](https://github.com/nguyenv119/hackharvard2023/assets/111405053/f1997007-951a-455c-8bc7-700dc82db22b)
+
 
