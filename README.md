@@ -76,6 +76,7 @@ Digital Health & Wellness
 - Integration with other personal growth apps.
 - Leveraging data analytics and natural language processing for insights.
 
+<img width="200" alt="demo1" src="https://github.com/nguyenv119/hackharvard2023/assets/111405053/60c952cf-6cc3-4e64-8f77-8acbd01fafc9">
 ![PNG image](https://github.com/nguyenv119/hackharvard2023/assets/111405053/60c952cf-6cc3-4e64-8f77-8acbd01fafc9)
 ![PNG image](https://github.com/nguyenv119/hackharvard2023/assets/111405053/f1997007-951a-455c-8bc7-700dc82db22b)
 ![PNG image](https://github.com/nguyenv119/hackharvard2023/assets/111405053/752ccd81-d3ae-4ad9-91eb-92bef6026a61)
