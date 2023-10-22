@@ -13,16 +13,13 @@ The inspiration behind Soular stems from the critical need to address mental wel
 Soular is a unique journaling and mood-tracking app that encourages users to engage in daily reflective writing. We provide AI-generated prompts to inspire users, scan for emotion-centric keywords, and craft visual insights based on detected emotions.
 
 ### How we built it
-Soular was built using a variety of technologies, including [List of technologies used]. Our development process involved [Brief overview of development process].
+Soular was built using a variety of technologies, including React Native, LLM training, prompt engineering, and more.
 
 ### Challenges we ran into
-During development, we faced challenges such as [List of challenges]. Overcoming these obstacles required creative solutions and perseverance.
-
-### Accomplishments that we're proud of
-We're proud of achieving [List of accomplishments]. These achievements set Soular apart in the digital health and wellness industry.
+During development, we faced challenges such as time management, task allocation, and teamwork problems in solving technical issues. Overcoming these obstacles required creative solutions and perseverance.
 
 ### What we learned
-Throughout the project, we learned valuable lessons, including [Key takeaways]. These insights will guide our future endeavors.
+Throughout the project, we learned valuable lessons, including time management and Mobile Development. These insights will guide our future endeavors.
 
 ### What's next for Soular
 In the future, we plan to [Outline future development plans]. Soular is committed to continual improvement and innovation.
