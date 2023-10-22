@@ -1,36 +1,23 @@
 # Soular - HackHarvard 2023 
 
-## Elevator Pitch:
-Soular is a revolutionary journaling and mood-tracking app that bridges the gap between mental and physical health. Our AI-powered platform illuminates your emotional universe, offering deep insights and fostering personal growth.
+## Description
+Soular is a revolutionary journaling and mood-tracking app that bridges the gap between mental and physical health. Our AI-powered platform illuminates your emotional universe, offering deep insights and fostering personal growth. We provide AI-generated prompts to inspire users, scan for emotion-centric keywords, and craft visual insights based on detected emotions.
 
-## Project Story
-At Soular, we're on a mission to help users map their mindfulness and navigate their emotional journey seamlessly. Here's our journey:
-
-### Inspiration
+## Inspiration
 The inspiration behind Soular stems from the critical need to address mental well-being, a neglected global issue. We aim to leverage cutting-edge APIs to offer a holistic understanding of well-being.
-
-### What it does
-Soular is a unique journaling and mood-tracking app that encourages users to engage in daily reflective writing. We provide AI-generated prompts to inspire users, scan for emotion-centric keywords, and craft visual insights based on detected emotions.
-
-### How we built it
-Soular was built using a variety of technologies, including React Native, LLM training, prompt engineering, and more.
-
-### Challenges we ran into
-During development, we faced challenges such as time management, task allocation, and teamwork problems in solving technical issues. Overcoming these obstacles required creative solutions and perseverance.
-
-### What we learned
-Throughout the project, we learned valuable lessons, including time management and Mobile Development. These insights will guide our future endeavors.
-
-### What's next for Soular
-In the future, we plan to [Outline future development plans]. Soular is committed to continual improvement and innovation.
 
 ## Built with:
 - Languages: JS
 - Frameworks: Expo, React Native
-
-
 - Platforms: IOS, Android
-- APIs: TerraAPI, OpenAI API
+- APIs: OpenAI API
+
+## Challenges we ran into
+This was our first time developing a mobile application, and we overestimated our ability to learn React Native, even though we knew React.
+During development, we faced challenges such as time management, task allocation, and teamwork problems in solving technical issues. We had to set a cut-off point for our technical development and started writing our project devpost. This is a great lesson for every one of us, in a limited time frame, good time management is key.
+
+## What's next for Soular
+With the data collected from the analysis generated from our AI model using the OpenAI API, we can compare user inputted mood data with the AI-generated data, and further compare and generate 
 
 
 ## PROBLEM STATEMENT
