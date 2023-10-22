@@ -69,10 +69,10 @@ const styles = StyleSheet.create({
 	},
 	chart: {
 		position: 'absolute',
-		top: '50%',
+		top: '100%',
 		left: '50%',
 		width: '100%', // make chart use the full width of its container
-		height: '80%', // adjust as needed
+		height: '60%', // adjust as needed
 	},
 	emotionsContainer: {
 		flex: 3, // takes up less space than the chart
