@@ -12,6 +12,13 @@ The inspiration behind Soular stems from the critical need to address mental wel
 - Platforms: IOS, Android
 - APIs: OpenAI API
 
+## Demo
+<img width="200" alt="demo3" src="https://github.com/nguyenv119/hackharvard2023/assets/111405053/752ccd81-d3ae-4ad9-91eb-92bef6026a61">
+<img width="200" alt="demo4" src="https://github.com/nguyenv119/hackharvard2023/assets/111405053/971f5554-0987-4aa9-8a1c-97949b160ac7">
+<img width="200" alt="demo5" src="https://github.com/nguyenv119/hackharvard2023/assets/111405053/64abec1b-a4d0-459d-964d-58f5507ffb73">
+<img width="200" alt="demo1" src="https://github.com/nguyenv119/hackharvard2023/assets/111405053/60c952cf-6cc3-4e64-8f77-8acbd01fafc9">
+<img width="200" alt="demo2" src="https://github.com/nguyenv119/hackharvard2023/assets/111405053/f1997007-951a-455c-8bc7-700dc82db22b">
+
 ## Challenges we ran into
 This was our first time developing a mobile application, and we overestimated our ability to learn React Native, even though we knew React.
 During development, we faced challenges such as time management, task allocation, and teamwork problems in solving technical issues. We had to set a cut-off point for our technical development and started writing our project devpost. This is a great lesson for every one of us, in a limited time frame, good time management is key.
@@ -61,15 +68,6 @@ Digital Health & Wellness
 - Portability and seamless synchronization across devices.
 - Integration with other personal growth apps.
 - Leveraging data analytics and natural language processing for insights.
-
-## Demo
-<img width="200" alt="demo3" src="https://github.com/nguyenv119/hackharvard2023/assets/111405053/752ccd81-d3ae-4ad9-91eb-92bef6026a61">
-<img width="200" alt="demo4" src="https://github.com/nguyenv119/hackharvard2023/assets/111405053/971f5554-0987-4aa9-8a1c-97949b160ac7">
-<img width="200" alt="demo5" src="https://github.com/nguyenv119/hackharvard2023/assets/111405053/64abec1b-a4d0-459d-964d-58f5507ffb73">
-<img width="200" alt="demo1" src="https://github.com/nguyenv119/hackharvard2023/assets/111405053/60c952cf-6cc3-4e64-8f77-8acbd01fafc9">
-<img width="200" alt="demo2" src="https://github.com/nguyenv119/hackharvard2023/assets/111405053/f1997007-951a-455c-8bc7-700dc82db22b">
-
-
 
 
 
